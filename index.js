@@ -7,7 +7,7 @@ const app = express();
 const server = http.createServer(app);
 const io = socket(server);
 
-app.use(express.static(__dirname + './public'));
+app.use(express.static(__dirname + '/public'));
 
 app.use(routes);
 
