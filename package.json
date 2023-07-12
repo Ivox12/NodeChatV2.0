@@ -1,0 +1,27 @@
+{
+  "name": "nodechatv2.0",
+  "version": "1.0.0",
+  "description": "- Usar npm e instalar dependecias\r - Fazer estrutura de pasta inicial\r - Separa o codigo em modulos\r   - *Rotas*\r   - *Models* -> modelos de banco ou consultas SQLs\r   - *Views* -> paginas a serem redenrizadas\r   - *Controlers* -> funcoes com regras de negocio da aplicacao. ex: login, buscar usaurio, socketio e etc.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "npx nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ivox12/NodeChatV2.0.git"
+  },
+  "author": "Ivox",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ivox12/NodeChatV2.0/issues"
+  },
+  "homepage": "https://github.com/ivox12/NodeChatV2.0#readme",
+  "dependencies": {
+    "express": "^4.18.2",
+    "mysql2": "^3.5.1",
+    "nodemon": "^3.0.1",
+    "sequelize": "^6.32.1",
+    "socket.io": "^4.7.1"
+  }
+}
