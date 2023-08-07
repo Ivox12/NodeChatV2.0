@@ -14,7 +14,7 @@
 }
 
 body {
-    overflow:hidden;
+    overflow:hiden;
     background-color: var(--bg-light-purple);
     font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
@@ -26,11 +26,16 @@ body {
     height: 200vh;
 }
 
+.divs {
+    display: flex;
+    height: 50%;
+}
+
 .square {
     background-color: white;
     box-shadow: 0px 0px 15px 1px rgb(223 188 255);
     border-radius: 6px;
-    margin-inline: auto;
+    margin: auto;
     width: 300px;
     padding-top: 2rem;
     padding-bottom: 2rem;
