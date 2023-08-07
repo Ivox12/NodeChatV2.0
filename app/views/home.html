@@ -7,29 +7,36 @@
     <title>Chat V2</title>
 </head>
 <body>
-    <section id="login">
-        <div  class="square column">
-            <div class="logo">
-                <img style="width: 150px; height: 150px; background-color: blue;">
-            </div>
-            <form action="#" method="#" class="column">
-                <input class="input-default" type="text" name="lg" id="lg" placeholder="Login">
-                <input class="input-default" type="password" name="pw" id="pw   " placeholder="Password">
-                <button class="input-default" type="submit">SignIn</button>
+    <section id="home">
+        <div  class="square">
+            <h2 class="square-header">Chat V2.0</h2>
+            <form action="#" method="#" class="default-form">
+                <label class="label">Login</label>
+                <input class="input-default" type="text" name="lg" id="lg">
+                <label class="label">Password</label>
+                <input class="input-default" type="password" name="pw" id="pw">
+                <button class="input-default bg-outline-purple" type="submit">Enter</button>
             </form>
             <div class="register">
-                <a href="#">SingUp</a>
+                <span>Do your account! </span>
+                <a href="javascript:regHome();">SingUp</a>
             </div>
         </div>
-    </section>
-    <section id="register">
-        <div class="square column">
-            <form action="#" method="post" class="column">
-                <input class="input-default" type="text" name="" id="" placeholder="Login">
-                <input class="input-default" type="text" name="" id="" placeholder="NickName">
-                <input class="input-default" type="password" name="" id="" placeholder="Password">
-                <button class="input-default" type="submit">Submit</button>
+        <div class="square">
+            <h2 class="square-header">Register</h2>
+            <form action="#" method="post" class="default-form">
+                <label class="label">Login</label>
+                <input class="input-default" type="text" name="" id="">
+                <label class="label">NickName</label>
+                <input class="input-default" type="text" name="" id="">
+                <label class="label">Password</label>
+                <input class="input-default" type="password" name="" id="">
+                <button class="input-default bg-outline-purple" type="submit">Submit</button>
             </form>
+            <div class="register">
+                <span>Already have an account?</span>
+                <a href="javascript:logHome();">SingIn</a>
+            </div>
         </div>
     </section>
     <section id="popups">
@@ -38,6 +45,7 @@
         </div>
     </section>
 </body>
+<script type="text/javascript" src="/js/logReg.js"></script>
 </html>
 
 <h1>teste</h1>

@@ -1,46 +1,90 @@
-@media screen and (min-width: 400px) {
-   .square {
-       max-width: 500px;
-   } 
+:root{
+    --primary: #F2F2F2 ;
+    --secondary:#CDCDCD;
+    --purple:#6528F7;
+    --light-purple:#A076F9;
+    --bg-light-purple: #e9e4fc;
 }
 
-section{
-    margin: 3rem;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior:smooth;
 }
 
-.logo{
+body {
+    overflow:hidden;
+    background-color: var(--bg-light-purple);
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+#home {
     display: flex;
-    justify-content: center;
-    margin-bottom: 1rem;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 200vh;
 }
 
 .square {
-    margin: auto;
-    width: 80%;
-    background-color: red;
-    box-shadow: 1px 1px 10px;
+    background-color: white;
+    box-shadow: 0px 0px 15px 1px rgb(223 188 255);
     border-radius: 6px;
+    margin-inline: auto;
+    width: 300px;
     padding-top: 2rem;
     padding-bottom: 2rem;
 }
 
-.column {
+.default-form {
+    color: var(--purple);
     display: flex;
-    flex-direction: column;
     justify-content: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
 }
 
-form {
-    margin: auto;
-    width: 450px;
+.label {
+    text-align: start;
+    width: 80%;
+    font-size: 1.2rem;
+}
+
+.input-default {
+    margin-bottom: 2.5rem;
+    border: none;
+    border-bottom: 2px solid var(--purple);
+    outline: none;
+    height: 40px;
+    width: 80%;
+    font-size: 1.2rem;
+}
+
+.bg-purple {
+    background-color: var(--purple);
+    color: var(--primary);
+    text-shadow: 0.5px 0.5px black;
+}
+
+.bg-outline-purple {
+    background-color: transparent;
+    border: 1px solid var(--purple);
+    color: var(--purple);
+    border-radius: 6px;
+}
+
+.bg-outline-purple:hover {
+    background-color: var(--purple);
+    color: white;
 }
 
 .register {
     text-align: center;
 }
 
-.input-default{
-    min-height: 40px;
-    border-radius: 6px;
-    margin: 1rem;
+.square-header {
+    text-align: center;
+    padding-bottom: 2rem;
+    color: var(--purple);
 }
