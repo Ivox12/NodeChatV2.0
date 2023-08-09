@@ -1,8 +1,10 @@
 const express = require('express');
 const http = require('http');
 const socket = require('socket.io');
-const routes = require('./routes/web.js')
-
+const routes = require('./routes/web.js');
+const db = require('./app/repo/db.js');
+require('dotenv').config();
+db();
 const app = express();
 const server = http.createServer(app);
 const io = socket(server);

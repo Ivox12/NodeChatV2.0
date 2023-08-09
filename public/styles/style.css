@@ -22,7 +22,7 @@ body {
 #home {
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    /* justify-content: space-around; */
     height: 200vh;
 }
 
@@ -36,6 +36,7 @@ body {
     box-shadow: 0px 0px 15px 1px rgb(223 188 255);
     border-radius: 6px;
     margin: auto;
+    margin-top: ;
     width: 300px;
     padding-top: 2rem;
     padding-bottom: 2rem;
@@ -92,4 +93,9 @@ body {
     text-align: center;
     padding-bottom: 2rem;
     color: var(--purple);
+}
+
+/* popups */
+#popups {
+    display: none;
 }
