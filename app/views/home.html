@@ -29,7 +29,7 @@
                 <h2 class="square-header">Register</h2>
                 <div class="default-form">
                     <label class="label">Login</label>
-                    <input class="input-default" type="text" name="" id="nid">
+                    <input class="input-default" type="text" name="" id="nlg">
                     <label class="label">NickName</label>
                     <input class="input-default" type="text" name="" id="nnn">
                     <label class="label">Password</label>
@@ -58,8 +58,13 @@ async function makeReq(path, obj){
             "Content-Type": "application/json",
         },
         body: JSON.stringify(obj),
-    })
-    return await response.json();
+    });
+    let tempResponse = await response.json();
+    if (tempResponse.nick){
+        console.log(tempResponse.nick)
+        window.location.href = tempResponse.path
+    }
+    // return await response.json();
 }
 
 function reqLog(){
@@ -74,10 +79,20 @@ function reqLog(){
 }
 
 function reqReg(){
-
+    console.log('foi')
+    let path = "/register";
+    let log = document.getElementById('nlg').value;
+    let pass = document.getElementById('npw').value;
+    let nick = document.getElementById('nnn').value;
+    let obj = {
+        log,
+        nick,
+        pass,
+    }
+    makeReq(path, obj);
 }
 </script>
-<script type="text/javascript" src="/js/logReg.js"></script>
+<script type="text/javascript" src="/js/homeAnimation.js"></script>
 </html>
 
 <!-- <h1>teste</h1>

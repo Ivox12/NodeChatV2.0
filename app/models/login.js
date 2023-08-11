@@ -15,7 +15,7 @@ class User {
                 password: info.pass
             }
         });
-        return (!!user);
+        return (!!user ? user.dataValues.nick : !!user);
     }
 }
 
