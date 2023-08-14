@@ -10,21 +10,35 @@ class reg {
 
     static async createUser(info) {
         await sequelize.sync();
-        const user = await users.findOne({
+        const userLog = await users.findOne({
             where: {
                 name: info.login,
             }
         });
-        if (!user){
-            const test = await users.create({
-                name: info.login,
-                password: info.pass,
-                nick: info.nick
-            });
-            return (!!test);
+        const userNick = await users.findOne({
+            where: {
+                nick: info.nick,
+            }
+        });
+        if(userLog){
+            return (2);
         }
-        console.log('no')
-        return false;
+        if(userNick){
+            return (1);
+        }
+        else {
+            try {
+                await users.create({
+                    name: info.login,
+                    password: info.pass,
+                    nick: info.nick
+                });
+                return (3);
+            }
+            catch {
+                return (4);
+            }
+        }
     }
 }
 

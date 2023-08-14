@@ -13,13 +13,24 @@ async function regController(req, res){
     req.body.pass = hashCode(req.body.pass);
     const info = new models(req.body.log, req.body.pass, req.body.nick);
     let registered = await models.createUser(info);
-    if (registered){
-        res.status(200).json({message:'success'});
+    switch(registered){
+        case 1:
+            console.log('nick"existente"')
+            res.status(400).json({error:'!!Nick existente!!'})
+            break;
+        case 2: 
+            console.log('login"existente"')
+            res.status(400).json({error:'!!Login Existente!!'})
+            break;
+        case 3:
+            console.log('success')
+            res.status(201).json({success:'!!Criado com sucesso!!'})
+            break;
+        case 4:
+            console.log('deu ruim');
+            res.status(400).json({error:'Falha no cadastro'})
+            break;
     }
-    else {
-        res.status(400).json({message:'fail'})
-    }
-    
 }
 
 module.exports = regController;
