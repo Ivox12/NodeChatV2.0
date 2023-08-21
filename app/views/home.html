@@ -79,17 +79,28 @@ function reqLog(){
 }
 
 function reqReg(){
-    console.log('foi')
     let path = "/register";
     let log = document.getElementById('nlg').value;
     let pass = document.getElementById('npw').value;
     let nick = document.getElementById('nnn').value;
-    let obj = {
-        log,
-        nick,
-        pass,
+    if(validate(log) && validate(pass) && validate(nick)){
+        let obj = {
+            log,
+            nick,
+            pass,
+        }
+        makeReq(path, obj);
+        return
     }
-    makeReq(path, obj);
+}
+
+function validate(str){
+    if(str == null || str == '' || str.includes(' ')){
+        return false;
+    }
+    else {
+        return true;
+    }
 }
 </script>
 <script type="text/javascript" src="/js/homeAnimation.js"></script>

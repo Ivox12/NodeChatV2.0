@@ -36,7 +36,7 @@ class reg {
                 return (3);
             }
             catch {
-                return (4);
+                return ('err');
             }
         }
     }

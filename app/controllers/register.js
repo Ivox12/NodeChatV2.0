@@ -8,11 +8,24 @@ function hashCode(s) {
     }, 0);
 }
 
+function validate(str){
+    if(str == null || str == '' || str.includes(' ')){
+        return false;
+    }
+    else {
+        return true;
+    }
+}
+
 async function regController(req, res){
     console.log(req.body);
-    req.body.pass = hashCode(req.body.pass);
-    const info = new models(req.body.log, req.body.pass, req.body.nick);
-    let registered = await models.createUser(info);
+    let registered;
+    if(validate(req.body.log) && validate(req.body.pass) && validate(req.body.nick)){
+        req.body.pass = hashCode(req.body.pass);
+        const info = new models(req.body.log, req.body.pass, req.body.nick);
+        registered = await models.createUser(info);
+    }
+    
     switch(registered){
         case 1:
             console.log('nick"existente"')
@@ -26,7 +39,7 @@ async function regController(req, res){
             console.log('success')
             res.status(201).json({success:'!!Criado com sucesso!!'})
             break;
-        case 4:
+        default:
             console.log('deu ruim');
             res.status(400).json({error:'Falha no cadastro'})
             break;
