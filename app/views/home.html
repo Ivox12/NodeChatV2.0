@@ -11,6 +11,7 @@
         <div class="divs">
             <div  class="square">
                 <h2 class="square-header">Chat V2.0</h2>
+                <p id="log-err" class="square-header warns" style="color: red; text-align: center;">*User or Password incorrect!!</p>
                 <div class="default-form">
                     <label class="label">Login</label>
                     <input class="input-default" type="text" name="lg" id="lg">
@@ -27,6 +28,12 @@
         <div class="divs">
             <div class="square">
                 <h2 class="square-header">Register</h2>
+                <div class="">
+                    <p id="log-reg-err" class="square-header warns" style="color: red; text-align: center;">*Login exist!!</p>
+                    <p id="nick-err" class="square-header warns" style="color: red; text-align: center;">*Nick exist!!</p>
+                    <p id="suc-reg" class="square-header warns" style="color: green; text-align: center;">*Success!!</p>
+                    <p id="reg-err" class="square-header warns" style="color: red; text-align: center;">*Try again later!!</p>
+                </div>
                 <div class="default-form">
                     <label class="label">Login</label>
                     <input class="input-default" type="text" name="" id="nlg">
@@ -45,7 +52,7 @@
     </section>
     <section id="popups">
         <div>
-            <p>Usuario ou Senha incorretos</p>
+           
         </div>
     </section>
 </body>
@@ -59,15 +66,11 @@ async function makeReq(path, obj){
         },
         body: JSON.stringify(obj),
     });
-    let tempResponse = await response.json();
-    if (tempResponse.nick){
-        console.log(tempResponse.nick)
-        window.location.href = tempResponse.path
-    }
-    // return await response.json();
+    
+    return await response.json();
 }
 
-function reqLog(){
+async function reqLog(){
     let path = "/login";
     let log = document.getElementById('lg').value;
     let pass = document.getElementById('pw').value;
@@ -75,10 +78,16 @@ function reqLog(){
         log,
         pass,
     }
-    makeReq(path, obj);
+    let res = await makeReq(path, obj);
+    if (res.nick){
+        console.log(res.nick)
+        window.location.href = res.path
+    } else {
+        document.getElementById('log-err').style.display = "block";
+    }
 }
 
-function reqReg(){
+async function reqReg(){
     let path = "/register";
     let log = document.getElementById('nlg').value;
     let pass = document.getElementById('npw').value;
@@ -89,8 +98,41 @@ function reqReg(){
             nick,
             pass,
         }
-        makeReq(path, obj);
-        return
+        let res = await makeReq(path, obj);
+        regMessage(res);
+    }
+}
+
+function regMessage(res){
+    let nE = document.getElementById('nick-err');
+    let lE= document.getElementById('log-reg-err');
+    let suc = document.getElementById('suc-reg');
+    let err = document.getElementById('reg-err');
+    switch(res.id){
+        case 1:
+            nE.style.display = "block";
+            lE.style.display = "none";
+            err.style.display = "none";
+            suc.style.display = "none";
+            break;
+        case 2:
+            lE.style.display = "block";
+            nE.style.display = "none";
+            err.style.display = "none";
+            suc.style.display = "none";
+            break;
+        case 3:
+            suc.style.display = "block";
+            lE.style.display = "none";
+            nE.style.display = "none";
+            err.style.display = "none";
+            break;
+        case null:
+            err.style.display = "block";
+            nE.style.display = "none";
+            lE.style.display = "none";
+            suc.style.display = "none";
+            break;
     }
 }
 

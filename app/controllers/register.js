@@ -29,19 +29,19 @@ async function regController(req, res){
     switch(registered){
         case 1:
             console.log('nick"existente"')
-            res.status(400).json({error:'!!Nick existente!!'})
+            res.status(400).json({id:1, error:'!!Nick existente!!'})
             break;
         case 2: 
             console.log('login"existente"')
-            res.status(400).json({error:'!!Login Existente!!'})
+            res.status(400).json({id:2, error:'!!Login existente!!'})
             break;
         case 3:
             console.log('success')
-            res.status(201).json({success:'!!Criado com sucesso!!'})
+            res.status(201).json({id:3, success:'!!Criado com sucesso!!'})
             break;
         default:
             console.log('deu ruim');
-            res.status(400).json({error:'Falha no cadastro'})
+            res.status(400).json({id:null , error:'Falha no cadastro'})
             break;
     }
 }
