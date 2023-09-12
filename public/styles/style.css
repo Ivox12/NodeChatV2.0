@@ -14,7 +14,7 @@
 }
 
 body {
-    overflow:hdden;
+    overflow:hidden;
     background-color: var(--bg-light-purple);
     font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
@@ -64,63 +64,6 @@ body {
     height: 40px;
     width: 80%;
     font-size: 1.2rem;
-}
-
-.screen {
-    margin: auto;
-    display: flex;
-    justify-content: center;
-    width: 90vw;
-    height: 80vh;
-}
-
-.chat-size {
-    width: 60%;
-    height: 100%;
-    max-width: 650px;
-    max-height: 550px;
-}
-
-.list {
-    width: 20%;
-    height: 100%;
-    max-width: 325px;
-    max-height: 550px;
-    background-color: red;
-}
-
-.writer{
-    display: flex;
-}
-
-.chat-bd{
-    background-color: #A076F9;
-    height: 100%;
-    max-height: 510px;
-}
-
-.message-box {
-    border: none;
-    border-bottom: 2px solid var(--purple);
-    outline: none;
-    height: 40px;
-    width: 90%;
-    font-size: 1.2rem;
-    overflow: scroll;
-    text-indent: 1rem;
-}
-
-.send-message {
-    width: 10%;
-    max-height: 40px;
-    background-color: white;
-    border: none;
-    border-bottom: 2px solid var(--purple);
-    border-left: 1px solid var(--purple);
-}
-
-.send-message > img {
-    width: auto;
 }
 
 .bg-purple {

@@ -9,13 +9,14 @@ function hashCode(s) {
 }
 
 async function logController(req, res){
-    console.log(res);
     req.body.pass = hashCode(req.body.pass);
     const info = new models(req.body.log, req.body.pass);
     
     let user = await models.getUser(info);
     if(user){
-        res.status(200).json({message: 'autenticate', nick: user, path: '/chat'})
+        let nick = user.nick;
+        res.cookie('nickName', nick, {maxAge:3600000})
+        res.status(200).json({message: 'autenticate', infoUser: user, path: '/chat'})
         console.log('ok')
     }
     else {

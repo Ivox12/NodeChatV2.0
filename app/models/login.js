@@ -9,13 +9,14 @@ class User {
 
     static async getUser(info) {
         await sequelize.sync();
-        const user = await users.findOne({
+        let user = await users.findOne({
             where: {
                 name: info.login,
                 password: info.pass
             }
         });
-        return (!!user ? user.dataValues.nick : !!user);
+    
+        return (!!user ? user = {nick: user.dataValues.nick} : !!user);
     }
 }
 

@@ -12,7 +12,7 @@
             <div  class="square">
                 <h2 class="square-header">Chat V2.0</h2>
                 <p id="log-err" class="square-header warns" style="color: red; text-align: center;">*User or Password incorrect!!</p>
-                <div class="default-form">
+                <div class="default-form" id="logForm">
                     <label class="label">Login</label>
                     <input class="input-default" type="text" name="lg" id="lg">
                     <label class="label">Password</label>
@@ -34,14 +34,14 @@
                     <p id="suc-reg" class="square-header warns" style="color: green; text-align: center;">*Success!!</p>
                     <p id="reg-err" class="square-header warns" style="color: red; text-align: center;">*Try again later!!</p>
                 </div>
-                <div class="default-form">
+                <div class="default-form" id="regForm">
                     <label class="label">Login</label>
                     <input class="input-default" type="text" name="" id="nlg">
                     <label class="label">NickName</label>
                     <input class="input-default" type="text" name="" id="nnn">
                     <label class="label">Password</label>
                     <input class="input-default" type="password" name="" id="npw">
-                    <button class="input-default bg-outline-purple" onclick="reqReg()">Submit</button>
+                    <button class="input-default bg-outline-purple" onSubmit="reqReg()">Submit</button>
                 </div>
                 <div class="register">
                     <span>Already have an account?</span>
@@ -57,6 +57,18 @@
     </section>
 </body>
 <script>
+document.getElementById('logForm').addEventListener('keypress', function(e){
+    if(e.which == 13){
+        reqLog();
+    }
+},false);
+
+document.getElementById('regForm').addEventListener('keypress', function(e){
+    if(e.which == 13){
+        reqReg();
+    }
+},false);
+
 
 async function makeReq(path, obj){
     const response = await fetch(path, {
@@ -79,8 +91,7 @@ async function reqLog(){
         pass,
     }
     let res = await makeReq(path, obj);
-    if (res.nick){
-        console.log(res.nick)
+    if (res.infoUser){
         window.location.href = res.path
     } else {
         document.getElementById('log-err').style.display = "block";
