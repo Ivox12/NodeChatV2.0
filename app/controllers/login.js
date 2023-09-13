@@ -1,5 +1,6 @@
 const path = require('path');
 const models = require(path.resolve('./app/models/login.js'));
+const jwt = require('jsonwebtoken');
 
 function hashCode(s) {
     return s.split("").reduce(function(a, b) {
@@ -14,14 +15,15 @@ async function logController(req, res){
     
     let user = await models.getUser(info);
     if(user){
-        let nick = user.nick;
-        res.cookie('nickName', nick, {maxAge:3600000})
-        res.status(200).json({message: 'autenticate', infoUser: user, path: '/chat'})
-        console.log('ok')
+        const payload = {nick: user.nick};
+        const secret = process.env.JWT_SECRET
+        const token = jwt.sign(payload, secret, { expiresIn: '1h' });
+        res.status(200).json({message: 'autenticate', infoUser: user, path: '/chat', JWT: token})
+        console.log('log.js, ok')
     }
     else {
         res.status(401).json({message:'not in register'})
-        console.log('no');
+        console.log('log.js, no');
     }
 }
 
