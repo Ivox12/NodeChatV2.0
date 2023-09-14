@@ -2,9 +2,11 @@ const express = require('express');
 const http = require('http');
 const socket = require('socket.io');
 const routes = require('./routes/web.js');
+const cookieParser = require('cookie-parser');
 require('dotenv').config();
 
 const app = express();
+app.use(cookieParser());
 const server = http.createServer(app);
 const io = socket(server);
 

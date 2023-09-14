@@ -92,6 +92,8 @@ async function reqLog(){
     }
     let res = await makeReq(path, obj);
     if (res.infoUser){
+        sessionStorage.setItem('token', res.JWT)
+        console.log(sessionStorage);
         window.location.href = res.path
     } else {
         document.getElementById('log-err').style.display = "block";
