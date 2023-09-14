@@ -18,7 +18,7 @@ async function logController(req, res){
         const payload = {nick: user.nick};
         const secret = process.env.JWT_SECRET
         const token = jwt.sign(payload, secret, { expiresIn: '1h' });
-        res.cookie('token', token, {maxAge:360000});
+        res.cookie('token', token, {maxAge:6000, httpOnly: true});
         res.status(200).json({message: 'autenticate', infoUser: user, path: '/chat', JWT: token})
         console.log('log.js, ok')
     }

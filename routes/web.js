@@ -11,7 +11,7 @@ routes.use(express.json());
 routes.get('/', (req, res) => {
     res.sendFile(path.resolve('./app/views/home.html'));
 });
-routes.get('/chat', chatMiddleware);
+routes.get('/chat', chatMiddleware, chatController);
 
 routes.post('/login', logController);
 routes.post('/register', regController);

@@ -5,7 +5,7 @@ const path = require('path');
 async function chatController(req, res){
 
   console.log('chat.js');
-
+  res.sendFile(path.resolve('./app/views/chat.html'));
 }
 
 module.exports = chatController;

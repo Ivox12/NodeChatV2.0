@@ -1,8 +1,9 @@
 const path = require('path');
 const jwt = require('jsonwebtoken');
+const chatController = require('../controllers/chat');
 
 
-async function chatMiddleware(req, res){
+async function chatMiddleware(req, res, next){
     const secret = process.env.JWT_SECRET
     const token = req.cookies.token;
     jwt.verify(token, secret, (err, decoded) => {
@@ -11,7 +12,7 @@ async function chatMiddleware(req, res){
             return res.redirect('/');
         } else {
             console.log('Token verificado com sucesso. Decodificado:', decoded);
-            res.sendFile(path.resolve('./app/views/chat.html'));
+            next();
         }
     });
 }
