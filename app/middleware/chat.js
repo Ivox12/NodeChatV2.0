@@ -1,6 +1,5 @@
 const path = require('path');
 const jwt = require('jsonwebtoken');
-const chatController = require('../controllers/chat');
 
 
 async function chatMiddleware(req, res, next){
