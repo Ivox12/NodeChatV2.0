@@ -122,6 +122,12 @@ body {
     align-items: center;
 }
 
+.txt-err {
+    color: white;
+    font-size: 3em;
+    text-align: center;
+}
+
 .button-home {
     color: white;
     background-color: var(--purple);
