@@ -8,7 +8,7 @@ async function chatMiddleware(req, res, next){
     jwt.verify(token, secret, (err, decoded) => {
         if (err) {
             console.error('Erro ao verificar o token:', err);
-            return res.redirect('/');
+            res.sendFile(path.resolve('./app/views/err.html'));
         } else {
             console.log('Token verificado com sucesso. Decodificado:', decoded);
             next();

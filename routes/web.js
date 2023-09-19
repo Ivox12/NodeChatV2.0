@@ -11,8 +11,8 @@ routes.get('/', (req, res) => {
     res.sendFile(path.resolve('./app/views/home.html'));
 });
 
-routes.post('/register', regController);
 routes.post('/login', logController);
+routes.post('/register', regController);
 routes.get('/chat', chatMiddleware, chatController);
 
 routes.get('*', (req, res) => {

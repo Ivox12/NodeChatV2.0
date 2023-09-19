@@ -102,10 +102,67 @@ body {
 /* CHAT */
 
 .screen {
-    background-color: red;
-    width: 80vw;
-    height: 80vh;
+    display: flex;
+    width: 90vw;
+    height: 90vh;
     margin: auto;
+    margin-top: 2rem;
+    background-color: var(--purple);
+}
+
+.list {
+    margin: auto;
+    margin-inline: 0.5rem;
+    height: 95%;
+    width: 20%;
+    background-color: var(--light-purple);
+}
+
+.chat-size {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    width: 80%;
+    background-color: var(--purple);
+}
+
+.chat-bd {
+    background-color: var(--light-purple);
+    height: 100%;
+    padding: 1rem;
+    margin: 1rem;
+}
+
+.writer {
+    display: flex;
+    justify-content: space-around;
+    height: 10%;
+    background-color: var(--purple);
+}
+
+.message-box {
+    margin: 5px;
+    width: 90%;
+    font-size: 1.5rem;
+    text-indent: 0.5rem;
+    border: 0;
+    outline: 0;
+    border-radius: 12px;
+    background-color: var(--light-purple);
+}
+
+.send-message {
+    margin: 5px;
+    padding: 2px;
+    background-color: var(--light-purple);
+    border: 0;
+    border-radius: 100%;
+}
+
+.send-message > img {
+    height: 100%;
+    padding: 2px;
 }
 
 /* err view */

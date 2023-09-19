@@ -40,6 +40,7 @@ async function reqLog(){
         pass,
     }
     let res = await makeReq(path, obj);
+    console.log(res);
     if (res.infoUser){
         sessionStorage.setItem('token', res.JWT)
         window.location.href = res.path
