@@ -1,8 +1,10 @@
 :root{
     --primary: #F2F2F2 ;
     --secondary:#CDCDCD;
-    --purple:#6528F7;
-    --light-purple:#A076F9;
+    --rgb-purple:rgb(101, 40, 247);
+    --purple:#6528f7;
+    --rgb-light-purple:rgb(160, 118, 249);
+    --light-purple:#a076f9;
     --bg-light-purple: #e9e4fc;
 }
 
@@ -136,13 +138,14 @@ body {
 
 .writer {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
+    padding: 0.3rem;
+    margin: 1rem;
     height: 10%;
-    background-color: var(--purple);
+    background-color: rgba(var(--rgb-light-purple), 1);
 }
 
 .message-box {
-    margin: 5px;
     width: 90%;
     font-size: 1.5rem;
     text-indent: 0.5rem;
@@ -153,16 +156,17 @@ body {
 }
 
 .send-message {
-    margin: 5px;
     padding: 2px;
-    background-color: var(--light-purple);
     border: 0;
-    border-radius: 100%;
+    background-color: transparent;
 }
 
 .send-message > img {
     height: 100%;
-    padding: 2px;
+    padding: 5px;
+    background-color: var(--light-purple);
+    border: 0;
+    border-radius: 100%;
 }
 
 /* err view */
