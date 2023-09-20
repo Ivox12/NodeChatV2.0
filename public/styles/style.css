@@ -133,6 +133,39 @@ body {
     height: 100%;
     padding: 1rem;
     margin: 1rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.msg-bd {
+    background-color: var(--light-purple);
+    /* padding: 10px; */
+    border-radius: 12px;
+    margin: 5px;
+    display: flex;
+    justify-content: space-between;
+    width: fit-content;
+    max-width: 65%;
+}
+
+.msg-bd::before {
+    position: relative;
+    content: '';
+    background-color: var(--light-purple);
+    height: 10px;
+    width: 40px;
+    margin-left: -8px;
+    border-bottom-left-radius: 20px;
+}
+
+.msg {
+    padding: 10px;
+}
+
+.msg-hour {
+    display: flex;
+    justify-content: center;
+    align-items: end;
 }
 
 .writer {
