@@ -102,13 +102,11 @@ body {
 }
 
 /* CHAT */
-
 .screen {
     display: flex;
-    width: 90vw;
-    height: 90vh;
-    margin: auto;
-    margin-top: 2rem;
+    width: 100vw;
+    height: 100vh;
+    margin: auto;   
     background-color: var(--purple);
 }
 
@@ -117,7 +115,8 @@ body {
     margin-inline: 0.5rem;
     height: 95%;
     width: 20%;
-    background-color: var(--light-purple);
+    background-color: var(--bg-light-purple);
+    padding: 1rem;
 }
 
 .chat-size {
@@ -130,7 +129,7 @@ body {
 }
 
 .chat-bd {
-    background-color: var(--light-purple);
+    background-color: var(--bg-light-purple);
     height: 100%;
     padding: 1rem;
     margin: 1rem;
@@ -139,9 +138,8 @@ body {
 .writer {
     display: flex;
     justify-content: space-between;
-    padding: 0.3rem;
     margin: 1rem;
-    height: 10%;
+    height: 50px;
     background-color: rgba(var(--rgb-light-purple), 1);
 }
 
@@ -152,7 +150,7 @@ body {
     border: 0;
     outline: 0;
     border-radius: 12px;
-    background-color: var(--light-purple);
+    background-color: var(--bg-light-purple);
 }
 
 .send-message {
@@ -164,7 +162,7 @@ body {
 .send-message > img {
     height: 100%;
     padding: 5px;
-    background-color: var(--light-purple);
+    background-color: var(--bg-light-purple);
     border: 0;
     border-radius: 100%;
 }
@@ -185,7 +183,7 @@ body {
 
 .txt-err {
     color: white;
-    font-size: 3em;
+    font-size: 2em;
     text-align: center;
 }
 
@@ -196,4 +194,5 @@ body {
     padding-inline: 1rem;
     border-radius: 12px;
     border: 0;
+    margin-top: 2rem;
 }
