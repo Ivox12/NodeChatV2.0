@@ -117,6 +117,7 @@ body {
     width: 20%;
     background-color: var(--bg-light-purple);
     padding: 1rem;
+    border-radius: 12px;
 }
 
 .chat-size {
@@ -133,44 +134,118 @@ body {
     height: 100%;
     padding: 1rem;
     margin: 1rem;
-    display: flex;
-    flex-direction: column;
+    overflow-y: auto;
+    outline: 2px solid var(--light-purple);
+    border-radius: 12px;
 }
 
-.msg-bd {
-    background-color: var(--light-purple);
-    /* padding: 10px; */
+.chat-bd::-webkit-scrollbar {
+    width: 5px;
+}
+
+.chat-bd::-webkit-scrollbar-thumb {
+    background: var(--light-purple);
+    border-radius: 12px;
+}
+
+.chat-bd::-webkit-scrollbar-track-piece {
+    background: var(--secondary);
+    border-radius: 12px;
+}
+
+/* receive msg */
+.msg-bd-r {
+    width: 100%;
+    float: left;
+    color: white;
+}
+
+.msg-div-r {
+    background-color: var(--purple);
     border-radius: 12px;
     margin: 5px;
-    display: flex;
-    justify-content: space-between;
+    min-width: min-content;
     width: fit-content;
     max-width: 65%;
+    float: left;
 }
 
-.msg-bd::before {
-    position: relative;
+.msg-div-r::before {
+    position:relative;
+    display: block;
     content: '';
-    background-color: var(--light-purple);
-    height: 10px;
-    width: 40px;
-    margin-left: -8px;
+    background-color: var(--purple);
+    height: 15px;
+    width: 20px;
+    float: left;
+    margin-left: -5px;
     border-bottom-left-radius: 20px;
 }
 
-.msg {
+.msg-name {
+    padding: 10px;
+    padding-bottom: 0;
+}
+
+.msg-r {
     padding: 10px;
 }
 
-.msg-hour {
-    display: flex;
-    justify-content: center;
-    align-items: end;
+.msg-r > span {
+    overflow-wrap: break-word;
+}
+
+.msg-hour-r {
+    float: right;
+    margin: 5px;
+}
+
+/* send msg */
+
+.msg-bd-s {
+    color: white;
+    width: 100%;
+    float: right;
+}
+
+.msg-s {
+    padding: 10px;
+}
+
+.msg-s > span {
+    overflow-wrap: break-word;
+}
+
+.msg-hour-s {
+    float: right;
+    margin: 5px;
+}
+
+.msg-div-s {
+    background-color: var(--purple);
+    border-radius: 12px;
+    margin: 5px;
+    min-width: min-content;
+    width: fit-content;
+    max-width: 65%;
+    float: right;
+}
+
+.msg-div-s::before {
+    position:relative;
+    display: block;
+    content: '';
+    background-color: var(--purple);
+    height: 15px;
+    width: 20px;
+    float: right;
+    margin-right: -5px;
+    border-bottom-right-radius: 20px;
 }
 
 .writer {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     margin: 1rem;
     height: 50px;
     background-color: rgba(var(--rgb-light-purple), 1);
@@ -193,9 +268,10 @@ body {
 }
 
 .send-message > img {
+    filter: invert();
     height: 100%;
     padding: 5px;
-    background-color: var(--bg-light-purple);
+    /* background-color: var(--bg-light-purple); */
     border: 0;
     border-radius: 100%;
 }
