@@ -9,12 +9,7 @@ function hashCode(s) {
 }
 
 function validate(str){
-    if(str == null || str == '' || str.includes(' ')){
-        return false;
-    }
-    else {
-        return true;
-    }
+    return !(str == null || str == '' || str.includes(' '))
 }
 
 async function regController(req, res){
