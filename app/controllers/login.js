@@ -10,6 +10,11 @@ function hashCode(s) {
 }
 
 async function logController(req, res){
+    if (!req.body.pass || !req.body.log){
+        res.status(401).json({message:'not in register'})
+        console.log('log.js, no');
+        return;
+    }
     req.body.pass = hashCode(req.body.pass);
     const info = new models(req.body.log, req.body.pass);
     
@@ -18,7 +23,7 @@ async function logController(req, res){
         const payload = {nick: user.nick};
         const secret = process.env.JWT_SECRET
         const token = jwt.sign(payload, secret, { expiresIn: '1h' });
-        res.cookie('token', token, {maxAge:600000, httpOnly: true});
+        res.cookie('token', token, {maxAge:6000, httpOnly: true});
         res.status(200).json({message: 'autenticate', infoUser: user, path: '/chat', JWT: token})
         console.log('log.js, ok')
     }
