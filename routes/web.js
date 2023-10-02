@@ -10,10 +10,9 @@ routes.use(express.json());
 routes.get('/', (req, res) => {
     res.sendFile(path.resolve('./app/views/home.html'));
 });
-
 routes.post('/login', logController);
 routes.post('/register', regController);
-routes.get('/chat', chatMiddleware, chatController);
+routes.get('/chat', chatMiddleware, chatController.chatController);
 
 routes.get('*', (req, res) => {
     res.sendFile(path.resolve('./app/views/err.html'));

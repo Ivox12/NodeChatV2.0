@@ -5,12 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/styles/style.css">
     <meta name="viewport" content="width=device-width, user-scalable=no">
+    <script src="/socket.io/socket.io.js"></script>
     <title>ChatV2.0</title>
 </head>
 <body>
     <section class="screen">
         <div class="list">
-            <span>lista</span>
+            <div class="list-item">
+                <img style="width: 20px; height: 20px;">
+                <div class="list-name">
+                    <span>lista</span>
+                </div>
+                <span class="list-status"></span>
+            </div>
         </div>
         <div class="chat-size">
             <div id="msgs" class="chat-bd">
@@ -50,6 +57,10 @@
         </div>
     </section>
 </body>
+<script>
+    const socket = io();
+    // socket.emit('teste', 'ivox25');
+</script>
 </html>
 <!-- <h1>chat</h1>
 <a href="/"><button>home</button></a> -->

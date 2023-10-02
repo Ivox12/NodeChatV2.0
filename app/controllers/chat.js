@@ -3,9 +3,21 @@ const path = require('path');
 
 
 async function chatController(req, res){
-
   console.log('chat.js');
-  res.sendFile(path.resolve('./app/views/chat.html'));
+  res.sendFile(path.resolve('./app/views/chat.html')); 
 }
 
-module.exports = chatController;
+function socketController(io){
+  console.log('aop')
+  io.on('connection', (socket)=> {
+
+    socket.on("teste", (e) => {
+      console.log(e);
+    })
+    console.log('usuario conectado');
+  })
+
+
+}
+
+module.exports =  { chatController, socketController };

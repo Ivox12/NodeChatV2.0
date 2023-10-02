@@ -111,12 +111,56 @@ body {
 }
 
 .list {
+    direction: rtl;
+    overflow: auto;
     margin: auto;
     margin-inline: 0.5rem;
     height: 95%;
     width: 20%;
     background-color: var(--bg-light-purple);
     padding: 1rem;
+    border-radius: 12px;
+}
+
+.list-item {
+    direction: ltr;
+    background-color: var(--purple);
+    padding: 1rem;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    border-radius: 12px;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+}
+
+.list-status::after {
+    content: '';
+    display: block;
+    height: 20px;
+    width: 20px;
+    background-color: red;
+    border-radius: 100%;
+}
+
+.list::-webkit-scrollbar {
+    width: 5px;
+    height: 40px;
+    border-radius: 12px;
+}
+
+.list::-webkit-scrollbar-track {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+.list::-webkit-scrollbar-thumb {
+    background: var(--light-purple);
+    border-radius: 12px;
+}
+
+.list::-webkit-scrollbar-track-piece {
+    background: var(--secondary);
     border-radius: 12px;
 }
 
@@ -141,6 +185,13 @@ body {
 
 .chat-bd::-webkit-scrollbar {
     width: 5px;
+    height: 40px;
+    border-radius: 12px;
+}
+
+.chat-bd::-webkit-scrollbar-track {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
 }
 
 .chat-bd::-webkit-scrollbar-thumb {
