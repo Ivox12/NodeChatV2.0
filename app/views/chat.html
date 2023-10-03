@@ -58,8 +58,15 @@
     </section>
 </body>
 <script>
-    const socket = io();
-    // socket.emit('teste', 'ivox25');
+    var socket = io.connect();
+    token = sessionStorage.token
+    socket.emit('init', token);
+
+    socket.on('attUser', (info) => {
+        let lista = document.querySelector('.list-name')
+        lista.innerHTML = `<p>${info}<p>`
+        console.log(info);
+    })
 </script>
 </html>
 <!-- <h1>chat</h1>
