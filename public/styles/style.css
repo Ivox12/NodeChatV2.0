@@ -246,9 +246,10 @@ body {
     overflow-wrap: break-word;
 }
 
-.msg-hour-r {
+.msg-hour {
     float: right;
     margin: 5px;
+    text-wrap: nowrap;
 }
 
 /* send msg */
@@ -265,11 +266,6 @@ body {
 
 .msg-s > span {
     overflow-wrap: break-word;
-}
-
-.msg-hour-s {
-    float: right;
-    margin: 5px;
 }
 
 .msg-div-s {
@@ -292,6 +288,25 @@ body {
     float: right;
     margin-right: -5px;
     border-bottom-right-radius: 20px;
+}
+
+.div-g-not {
+    position: relative;
+    width: 100%;
+    float:left;
+    height: fit-content;
+}
+
+.g-msg {
+    background-color: var(--light-purple);
+    color: white;
+    padding: 10px;
+    margin: auto;
+    height: 60px;
+    width: min-content;
+    border-radius: 12px;
+    text-align: center;
+    text-wrap: nowrap;
 }
 
 .writer {

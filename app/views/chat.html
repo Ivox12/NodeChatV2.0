@@ -29,7 +29,7 @@
                         <div class="msg-r">
                             <span>Menssagem Menssagem Menssagem Menssagem Menssagem MenssagemMenssagem MenssagemMenssagem MenssagemMenssagem MenssagemMenssagem Menssagem</span>
                         </div>
-                        <div class="msg-hour-r">
+                        <div class="msg-hour">
                             <span>hora</span>
                         </div>
                     </div>
@@ -42,8 +42,16 @@
                         <div class="msg-s">
                             <span>text</span>
                         </div>
-                        <div class="msg-hour-s">
+                        <div class="msg-hour">
                             <span>hora</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="div-g-not">
+                    <div class="g-msg">
+                        <span>USUARIO SAIU PORRA</span>
+                        <div class="msg-hour">
+                            <span>HORA</span>
                         </div>
                     </div>
                 </div>
@@ -57,17 +65,7 @@
         </div>
     </section>
 </body>
-<script>
-    var socket = io.connect();
-    token = sessionStorage.token
-    socket.emit('init', token);
-
-    socket.on('attUser', (info) => {
-        let lista = document.querySelector('.list-name')
-        lista.innerHTML = `<p>${info}<p>`
-        console.log(info);
-    })
-</script>
+<script src="/js/chat.js"></script>
 </html>
 <!-- <h1>chat</h1>
 <a href="/"><button>home</button></a> -->

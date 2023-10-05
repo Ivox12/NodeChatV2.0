@@ -28,19 +28,21 @@ function socketController(io){
             tempUser = {sid: socket.id, nick: decoded.nick };
             users.push(tempUser)
             userList = getUserList(users);
-            socket.emit('attUser', userList);
+            io.emit('attUser', userList);
         }
       });
     })
     socket.on('disconnect', () => {
       users = users.filter((info)=>{
         if (info.sid == socket.id){
-          console.log('desconectado%#%#%#%#', info)
+          offMessage = {time: pegarDataAtual(), nick: info.nick};
+          tempChat.push(offMessage);
+          io.emit('userOff', offMessage);
         }
         return info.sid !== socket.id
       })
       userList = getUserList(users);
-      socket.emit('attUser', userList)
+      io.emit('attUser', userList)
     })
   })
 }
@@ -48,6 +50,18 @@ function socketController(io){
 function getUserList(arr) {
   arr = arr.map(users => users.nick)
   return arr;
+}
+
+function pegarDataAtual(){
+  var dataAtual = new Date();
+  var dia = (dataAtual.getDate()<10 ? '0' : '') + dataAtual.getDate();
+  var mes = ((dataAtual.getMonth() + 1)<10 ? '0' : '') + (dataAtual.getMonth() + 1);
+  var ano = dataAtual.getFullYear();
+  var hora = (dataAtual.getHours()<10 ? '0' : '') + dataAtual.getHours();
+  var minuto = (dataAtual.getMinutes()<10 ? '0' : '') + dataAtual.getMinutes();
+
+  var dataFormatada = dia + "/" + mes + "/" + ano + " " + hora + ":" + minuto;
+  return dataFormatada;
 }
 
 module.exports =  { chatController, socketController };
