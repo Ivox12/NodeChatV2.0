@@ -302,6 +302,8 @@ body {
     color: white;
     padding: 10px;
     margin: auto;
+    margin-top: 5px;
+    margin-bottom: 5px;
     height: 60px;
     width: min-content;
     border-radius: 12px;

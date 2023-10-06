@@ -26,9 +26,11 @@ function socketController(io){
         } else {
             console.log('Token verificado com sucesso. Decodificado:', decoded);
             tempUser = {sid: socket.id, nick: decoded.nick };
-            users.push(tempUser)
+            onMessage = {time: pegarDataAtual(), nick: decoded.nick};
+            users.push(tempUser);
             userList = getUserList(users);
             io.emit('attUser', userList);
+            io.emit('userOn', onMessage);
         }
       });
     })

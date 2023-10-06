@@ -30,3 +30,16 @@ socket.on('userOff', (info) => {
     </div>`
     console.log(info);
 })
+
+socket.on('userOn', (info) => {
+    let msgs = document.getElementById('msgs')
+    msgs.innerHTML += 
+    `<div class="div-g-not">
+        <div class="g-msg">
+            <span>${info.nick} Entrou na Conversa</span>
+            <div class="msg-hour">
+                <span>${info.time}</span>
+            </div>
+        </div>
+    </div>`
+})
