@@ -14,9 +14,8 @@ function socketController(io){
   let users = [];
   let userList = [];
   io.on('connect', (socket)=> {
-
     console.log('usuario conectado');
-    socket.on('init', async (info) => {
+    socket.on('init',(info) => {
       const secret = process.env.JWT_SECRET
       const token = info;
     
@@ -25,8 +24,8 @@ function socketController(io){
             console.error('Erro ao verificar o token:', err);
         } else {
             console.log('Token verificado com sucesso. Decodificado:', decoded);
-            tempUser = {sid: socket.id, nick: decoded.nick };
-            onMessage = {time: pegarDataAtual(), nick: decoded.nick};
+            tempUser = {sid: socket.id, uid: decoded.uid, nick: decoded.nick };
+            onMessage = {time: pegarDataAtual(), uid: decoded.uid, nick: decoded.nick};
             users.push(tempUser);
             userList = getUserList(users);
             io.emit('attUser', userList);
@@ -50,7 +49,7 @@ function socketController(io){
 }
 
 function getUserList(arr) {
-  arr = arr.map(users => users.nick)
+  arr = arr.map(users => ({nick: users.nick, uid: users.uid}))
   return arr;
 }
 

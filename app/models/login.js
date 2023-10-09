@@ -16,7 +16,7 @@ class User {
             }
         });
     
-        return (!!user ? user = {nick: user.dataValues.nick} : !!user);
+        return (!!user ? user = {uid: user.dataValues.id, nick: user.dataValues.nick} : !!user);
     }
 }
 

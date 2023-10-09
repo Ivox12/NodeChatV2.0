@@ -20,7 +20,7 @@ async function logController(req, res){
     
     let user = await models.getUser(info);
     if(user){
-        const payload = {nick: user.nick};
+        const payload = {uid: user.uid, nick: user.nick};
         const secret = process.env.JWT_SECRET
         const token = jwt.sign(payload, secret, { expiresIn: '1h' });
         res.cookie('token', token, {maxAge:600000, httpOnly: true});
