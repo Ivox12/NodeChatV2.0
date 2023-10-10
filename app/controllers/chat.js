@@ -15,19 +15,21 @@ function socketController(io){
   let userList = [];
   io.on('connect', (socket)=> {
     console.log('usuario conectado');
-    socket.on('init',(info) => {
+    socket.on('init',() => {
       const secret = process.env.JWT_SECRET
-      const token = info;
+      const token = socket.handshake.auth.token;
     
       jwt.verify(token, secret,(err, decoded) => {
         if (err) {
             console.error('Erro ao verificar o token:', err);
+            socket.emit('err', '/');
         } else {
             console.log('Token verificado com sucesso. Decodificado:', decoded);
             tempUser = {sid: socket.id, uid: decoded.uid, nick: decoded.nick };
             onMessage = {time: pegarDataAtual(), uid: decoded.uid, nick: decoded.nick};
             users.push(tempUser);
             userList = getUserList(users);
+            socket.emit('setUid', decoded.uid);
             io.emit('attUser', userList);
             io.emit('userOn', onMessage);
         }
@@ -44,6 +46,15 @@ function socketController(io){
       })
       userList = getUserList(users);
       io.emit('attUser', userList)
+    })
+    socket.on('sendMessage', (msg) => {
+      users.find((e)=>{
+        if (e.sid == socket.id){
+          from = {uid: e.uid, nick: e.nick};
+          msgComplete = {time: pegarDataAtual(), message: msg, from};
+          io.emit('attMessage', msgComplete)
+        }
+      })
     })
   })
 }

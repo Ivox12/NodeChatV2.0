@@ -1,6 +1,15 @@
-var socket = io.connect();
-token = sessionStorage.token
-socket.emit('init', token);
+const token = sessionStorage.token;
+var socket = io({
+    auth: {
+        token
+    }
+});
+
+socket.emit('init');
+
+socket.on('setUid', (info) => {
+    socket.uid = info;
+})
 
 socket.on('attUser',(info) => {
     let lista = document.querySelector('.list')
@@ -43,6 +52,46 @@ socket.on('userOn', (info) => {
     </div>`
 })
 
+socket.on('err', (info) => {
+    window.location.href = info;
+})
+
+socket.on('attMessage', (info) => {
+    let msgs = document.getElementById('msgs')
+    if (socket.uid == info.from.uid) {
+        msgs.innerHTML += 
+        `<div class="msg-bd-s">
+            <div class="msg-div-s">
+                <div class="msg-name">
+                    <span>${info.from.nick}</span>
+                </div>
+                <div class="msg-s">
+                    <span>${info.message}</span>
+                </div>
+                <div class="msg-hour">
+                    <span>${info.time}</span>
+                </div>
+            </div>
+        </div>`
+    }
+    else {
+        msgs.innerHTML += 
+        `<div class="msg-bd-r">
+            <div class="msg-div-r">
+                <div class="msg-name">
+                    <span>${info.from.nick}</span>
+                </div>
+                <div class="msg-r">
+                    <span>${info.message}</span>
+                </div>
+                <div class="msg-hour">
+                    <span>${info.time}</span>
+                </div>
+            </div>
+        </div>`
+    }
+;})
+
 document.getElementById('writer').addEventListener('keypress', function(e){
     if(e.which == 13){
         sendmsg();
@@ -54,9 +103,6 @@ document.getElementById('send-writer').addEventListener('click', function(e){
 
 function sendmsg(){
     msg = document.getElementById('message-box');
-    console.log(msg.value);
-    socket.emit('newMessage', () => {
-        // terminar aq
-    })
+    socket.emit('sendMessage', msg.value);
     msg.value = '';
 }
