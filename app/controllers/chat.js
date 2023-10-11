@@ -1,5 +1,6 @@
 const path = require('path');
 const jwt = require('jsonwebtoken');
+const { json } = require('sequelize');
 // const models = require(path.resolve('./app/models/chat.js'));
 
 
@@ -26,21 +27,23 @@ function socketController(io){
         } else {
             console.log('Token verificado com sucesso. Decodificado:', decoded);
             tempUser = {sid: socket.id, uid: decoded.uid, nick: decoded.nick };
-            onMessage = {time: pegarDataAtual(), uid: decoded.uid, nick: decoded.nick};
+            msgComplete = {time: pegarDataAtual(), uid: decoded.uid, nick: decoded.nick};
             users.push(tempUser);
             userList = getUserList(users);
             socket.emit('setUid', decoded.uid);
             io.emit('attUser', userList);
-            io.emit('userOn', onMessage);
+            restoreChat(socket, tempChat);
+            io.emit('userOn', msgComplete);
+            tempChat.push({type: 'userOn', msgComplete});
         }
       });
     })
     socket.on('disconnect', () => {
       users = users.filter((info)=>{
         if (info.sid == socket.id){
-          offMessage = {time: pegarDataAtual(), nick: info.nick};
-          tempChat.push(offMessage);
-          io.emit('userOff', offMessage);
+          msgComplete = {time: pegarDataAtual(), nick: info.nick};
+          io.emit('userOff', msgComplete);
+          tempChat.push({type: 'userOff', msgComplete});
         }
         return info.sid !== socket.id
       })
@@ -53,10 +56,17 @@ function socketController(io){
           from = {uid: e.uid, nick: e.nick};
           msgComplete = {time: pegarDataAtual(), message: msg, from};
           io.emit('attMessage', msgComplete)
+          tempChat.push({type: 'attMessage', msgComplete});
         }
       })
     })
   })
+}
+
+function restoreChat(socket, arr){
+  arr.forEach(element => {
+    socket.emit(element.type, element.msgComplete);
+  });
 }
 
 function getUserList(arr) {

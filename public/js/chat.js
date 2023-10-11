@@ -26,9 +26,8 @@ socket.on('attUser',(info) => {
     });
 })
 
-socket.on('userOff', (info) => {
-    let msgs = document.getElementById('msgs')
-    msgs.innerHTML += 
+socket.on('userOff', (info) => {    
+    let msg =
     `<div class="div-g-not">
         <div class="g-msg">
             <span>${info.nick} Saiu da Conversa</span>
@@ -36,12 +35,12 @@ socket.on('userOff', (info) => {
                 <span>${info.time}</span>
             </div>
         </div>
-    </div>`
+    </div>`;
+    newMsg(msg);
 })
 
 socket.on('userOn', (info) => {
-    let msgs = document.getElementById('msgs')
-    msgs.innerHTML += 
+    let msg = 
     `<div class="div-g-not">
         <div class="g-msg">
             <span>${info.nick} Entrou na Conversa</span>
@@ -49,7 +48,8 @@ socket.on('userOn', (info) => {
                 <span>${info.time}</span>
             </div>
         </div>
-    </div>`
+    </div>`;
+    newMsg(msg);
 })
 
 socket.on('err', (info) => {
@@ -57,9 +57,8 @@ socket.on('err', (info) => {
 })
 
 socket.on('attMessage', (info) => {
-    let msgs = document.getElementById('msgs')
     if (socket.uid == info.from.uid) {
-        msgs.innerHTML += 
+        let msg = 
         `<div class="msg-bd-s">
             <div class="msg-div-s">
                 <div class="msg-name">
@@ -72,10 +71,11 @@ socket.on('attMessage', (info) => {
                     <span>${info.time}</span>
                 </div>
             </div>
-        </div>`
+        </div>`;
+        newMsg(msg);
     }
     else {
-        msgs.innerHTML += 
+        let msg = 
         `<div class="msg-bd-r">
             <div class="msg-div-r">
                 <div class="msg-name">
@@ -88,9 +88,10 @@ socket.on('attMessage', (info) => {
                     <span>${info.time}</span>
                 </div>
             </div>
-        </div>`
+        </div>`;
+        newMsg(msg);
     }
-;})
+})
 
 document.getElementById('writer').addEventListener('keypress', function(e){
     if(e.which == 13){
@@ -105,4 +106,9 @@ function sendmsg(){
     msg = document.getElementById('message-box');
     socket.emit('sendMessage', msg.value);
     msg.value = '';
+}
+
+function newMsg(msg){
+    let msgs = document.getElementById('msgs')
+    msgs.innerHTML += msg
 }
